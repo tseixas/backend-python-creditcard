@@ -35,7 +35,7 @@ Como não é um cadastro qualquer, esses dados precisam passar por uma validaç�
 - **exp_date**
   - Ver se é uma data válida.
   - E se for válida, não pode ser menor do que a data de hoje. 😜
-  - No banco de dados essa data deve ser gravada no formato yyyy/MM/[ultimo_dia_mes], por exemplo: 02/2022, deve ser 2022/02/28
+  - No banco de dados essa data deve ser gravada no formato yyyy-MM-[ultimo_dia_mes], por exemplo: 02/2022, deve ser 2022-02-28
 
 - **holder**
   - Deve ser um campo obrigatório e deve possuir mais de 2 caracteres.
@@ -64,8 +64,7 @@ Você está livre para definir a melhor arquitetura e tecnologias para soluciona
 
 Nós solicitamos que você trabalhe no desenvolvimento desse sistema sozinho e não divulgue a solução desse problema pela internet.
 
-Boa sorte,
-Equipe MaisTodos!
+Boa sorte, Equipe MaisTodos!
 
 ![Luck](https://media.giphy.com/media/l49JHz7kJvl6MCj3G/giphy.gif)
 
