@@ -14,7 +14,7 @@ Alguns requisitos
   - Pergunte nos sobre qualquer dúvida que venha a surgir durante o desenvolvimento;
   - Documente detalhadamente quaisquer referencias/ferramentas que vc pesquisar;
   - Crie um repositório público e nos passe o link para acompanharmos o desenvolvimento;
-  - Faça testes;
+  - Faça testes automatizados (unitários e de integração);
 
 Problema
 --------
