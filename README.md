@@ -42,7 +42,7 @@ Como não é um cadastro qualquer, esses dados precisam passar por uma validaç�
 
 - **number**
   - Verificar se o número do cartão de crédito é válido, utilizando a lib https://github.com/MaisTodos/python-creditcard
-  - para instalar use ```pip install git+https://github.com/maistodos/python-creditcard.git@main```
+  - Para instalar use ```pip install git+https://github.com/maistodos/python-creditcard.git@main```
   - Este campo deve ser gravado de forma criptografada no banco de dados.
 
 - **cvv**
