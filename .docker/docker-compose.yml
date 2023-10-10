@@ -12,9 +12,9 @@ services:
   db:
     image: postgres:14.2-alpine
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=creditcard
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=creditcard
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
