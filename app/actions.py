@@ -1,13 +1,36 @@
+from fastapi import HTTPException
 from fastapi_sqlalchemy import db
 from . import models, schemas
+from math import ceil
 
 
-def get_card_by_id(card_id: str):
-    return db.query(models.Card).filter(models.Card.id == card_id).first()
+def get_card_by_id(card_id: int):
+    card = db.session.query(models.Card).filter(
+        models.Card.id == card_id).first()
+
+    if not card:
+        raise HTTPException(status_code=404, detail="Card not found")
+
+    return card
 
 
-def get_cards(skip: int = 0, limit: int = 10):
-    return db.session.query(models.Card).offset(skip).limit(limit).all()
+def get_cards(skip: int = 0, limit: int = 10, page: int = 1):
+    if page < 1:
+        page = 1
+
+    skip = page * limit
+
+    query = db.session.query(models.Card)
+
+    total = query.count()
+    pages = ceil(total / limit)
+    result = query.offset(skip).limit(limit).all()
+
+    return {
+        "data": result,
+        "total": total,
+        "pages": pages
+    }
 
 
 def save_card(card: schemas.Card):
