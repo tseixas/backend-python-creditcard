@@ -36,7 +36,7 @@ def save_card(card: schemas.CardBase):
     credit_card = CreditCard(card.number)
 
     if not credit_card.is_valid():
-        raise HTTPException(status_code=404, detail="Invalid Card")
+        raise HTTPException(status_code=400, detail="Invalid Card")
 
     db_card = models.Card(
         exp_date=card.exp_date,
