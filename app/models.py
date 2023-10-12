@@ -1,5 +1,5 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import validates
 import datetime
 import calendar
@@ -11,7 +11,7 @@ class Card(Base):
     __tablename__ = "cards"
 
     id = Column(Integer, primary_key=True, index=True)
-    exp_date = Column(DateTime)
+    exp_date = Column(Date)
     holder = Column(String)
     number = Column(String)
     cvv = Column(Integer)
@@ -19,11 +19,11 @@ class Card(Base):
 
     @validates("exp_date")
     def validate_exp_date(self, key, exp_date):
-        timezone = pytz.timezone('UTC')
+        today = datetime.datetime.now().date()
 
-        if exp_date.replace(tzinfo=timezone) < datetime.datetime.now().replace(tzinfo=timezone):
+        if exp_date < today:
             raise HTTPException(
-                status_code=400, detail="failed simple exp_date validation")
+                status_code=400, detail="Invalid Expiration date")
 
         year = exp_date.year
         month = exp_date.month
@@ -37,7 +37,7 @@ class Card(Base):
     def validate_holder(self, key, holder):
         if len(holder) < 2:
             raise HTTPException(
-                status_code=400, detail="failed simple holder validation")
+                status_code=400, detail="Invalid Holder")
 
         return holder
 
@@ -47,6 +47,6 @@ class Card(Base):
 
         if len(cvv) < 3 or len(cvv) > 4:
             raise HTTPException(
-                status_code=400, detail="failed simple cvv validation")
+                status_code=400, detail="Invalid CVV")
 
         return cvv

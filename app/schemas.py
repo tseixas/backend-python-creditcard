@@ -4,7 +4,7 @@ from typing import List
 
 
 class CardBase(BaseModel):
-    exp_date: datetime.datetime
+    exp_date: datetime.date
     holder: str
     number: str
     cvv: int
