@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi_sqlalchemy import DBSessionMiddleware
-from . import actions, schemas
+from . import actions, schemas, models
 from app.database import DATABASE_URL, engine
 
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Credit Card")
 
