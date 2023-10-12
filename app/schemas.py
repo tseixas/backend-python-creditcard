@@ -15,7 +15,7 @@ class CardBase(BaseModel):
 
 class Card(CardBase):
     id: int
-    exp_date: datetime.datetime
+    exp_date: datetime.date
     holder: str
     number: str
     cvv: int
