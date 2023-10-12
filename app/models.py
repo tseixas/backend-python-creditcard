@@ -4,6 +4,7 @@ from sqlalchemy.orm import validates
 import datetime
 import calendar
 import pytz
+from fastapi import HTTPException
 
 
 class Card(Base):
@@ -21,7 +22,8 @@ class Card(Base):
         timezone = pytz.timezone('UTC')
 
         if exp_date.replace(tzinfo=timezone) < datetime.datetime.now().replace(tzinfo=timezone):
-            raise ValueError("failed simple exp_date validation")
+            raise HTTPException(
+                status_code=400, detail="failed simple exp_date validation")
 
         year = exp_date.year
         month = exp_date.month
@@ -34,7 +36,8 @@ class Card(Base):
     @validates("holder")
     def validate_holder(self, key, holder):
         if len(holder) < 2:
-            raise ValueError("failed simple holder validation")
+            raise HTTPException(
+                status_code=400, detail="failed simple holder validation")
 
         return holder
 
@@ -43,6 +46,7 @@ class Card(Base):
         cvv = str(cvv)
 
         if len(cvv) < 3 or len(cvv) > 4:
-            raise ValueError("failed simple cvv validation")
+            raise HTTPException(
+                status_code=400, detail="failed simple cvv validation")
 
         return cvv
