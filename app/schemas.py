@@ -3,6 +3,24 @@ import datetime
 from typing import List
 
 
+class User(BaseModel):
+    username: str
+    full_name: str
+
+
+class UserInDB(User):
+    hashed_password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str
+
+
 class CardBase(BaseModel):
     exp_date: datetime.date
     holder: str
