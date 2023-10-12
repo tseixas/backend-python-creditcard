@@ -35,19 +35,18 @@ def get_cards(skip: int = 0, limit: int = 10, page: int = 1):
 
 
 def save_card(card: schemas.Card):
-    db_card = models.Card(
-        exp_date=card.exp_date,
-        holder=card.holder,
-        number=card.number,
-        cvv=card.cvv
-    )
-
     credit_card = CreditCard(card.number)
 
     if not credit_card.is_valid():
         raise HTTPException(status_code=404, detail="Card inválid")
 
-    credit_card.get_brand()
+    db_card = models.Card(
+        exp_date=card.exp_date,
+        holder=card.holder,
+        number=card.number,
+        cvv=card.cvv,
+        brand=credit_card.get_brand()
+    )
 
     db.session.add(db_card)
     db.session.commit()

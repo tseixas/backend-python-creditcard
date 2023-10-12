@@ -14,10 +14,13 @@ class Card(Base):
     holder = Column(String)
     number = Column(String)
     cvv = Column(Integer)
+    brand = Column(String)
 
     @validates("exp_date")
     def validate_exp_date(self, key, exp_date):
-        if exp_date.replace(tzinfo=pytz.timezone('UTC')) < datetime.datetime.now().replace(tzinfo=pytz.timezone('UTC')):
+        timezone = pytz.timezone('UTC')
+
+        if exp_date.replace(tzinfo=timezone) < datetime.datetime.now().replace(tzinfo=timezone):
             raise ValueError("failed simple exp_date validation")
 
         year = exp_date.year
