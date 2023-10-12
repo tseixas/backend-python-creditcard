@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import validates
 import datetime
 import calendar
-import pytz
 from fastapi import HTTPException
 
 
