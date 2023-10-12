@@ -13,7 +13,7 @@ app.add_middleware(DBSessionMiddleware, db_url=DATABASE_URL,
 
 
 @app.post("/cards/", response_model=schemas.Card)
-def save_card(card: schemas.Card):
+def save_card(card: schemas.CardBase):
     return actions.save_card(card=card)
 
 

@@ -3,12 +3,23 @@ import datetime
 from typing import List
 
 
-class Card(BaseModel):
+class CardBase(BaseModel):
+    exp_date: datetime.datetime
+    holder: str
+    number: str
+    cvv: int
+
+    class Config:
+        from_attributes = True
+
+
+class Card(CardBase):
     id: int
     exp_date: datetime.datetime
     holder: str
     number: str
     cvv: int
+    brand: str
 
     class Config:
         from_attributes = True

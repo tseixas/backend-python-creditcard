@@ -19,8 +19,6 @@ def get_cards(skip: int = 0, limit: int = 10, page: int = 1):
     if page < 1:
         page = 1
 
-    skip = page * limit
-
     query = db.session.query(models.Card)
 
     total = query.count()
@@ -34,7 +32,7 @@ def get_cards(skip: int = 0, limit: int = 10, page: int = 1):
     }
 
 
-def save_card(card: schemas.Card):
+def save_card(card: schemas.CardBase):
     credit_card = CreditCard(card.number)
 
     if not credit_card.is_valid():
