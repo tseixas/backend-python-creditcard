@@ -13,7 +13,7 @@ class Card(Base):
     exp_date = Column(DateTime)
     holder = Column(String)
     number = Column(String)
-    cvv = Column(String(4))
+    cvv = Column(Integer)
 
     @validates("exp_date")
     def validate_exp_date(self, key, exp_date):
@@ -32,11 +32,13 @@ class Card(Base):
     def validate_holder(self, key, holder):
         if len(holder) < 2:
             raise ValueError("failed simple holder validation")
-        
+
         return holder
 
     @validates("cvv")
     def validate_cvv(self, key, cvv):
+        cvv = str(cvv)
+
         if len(cvv) < 3 or len(cvv) > 4:
             raise ValueError("failed simple cvv validation")
 

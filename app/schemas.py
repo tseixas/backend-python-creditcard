@@ -8,7 +8,7 @@ class Card(BaseModel):
     exp_date: datetime.datetime
     holder: str
     number: str
-    cvv: str
+    cvv: int
 
     class Config:
         from_attributes = True
