@@ -1,4 +1,20 @@
+Sumário
+-----------------
+<!--ts-->
+- [backend-python-creditcard](#backend-python-creditcard)
+- [Desafio técnico `Python`](#desafio-técnico-python)
+  - [Alguns requisitos](#alguns-requisitos)
+  - [Problema](#problema)
+      - [IMPORTANTE:](#importante)
+- [Instruções sobre desenvolvimento do projeto](#instruções-sobre-desenvolvimento-do-projeto)
+  - [Tecnologias utilizadas](#tecnologias-utilizadas)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalando o projeto](#instalando-o-projeto)
+  - [Autenticação](#autenticação)
+  - [Testes](#testes)
+<!--te-->
 # backend-python-creditcard
+
 Desafio para vaga de backend na MaisTodos
 
 ![portaldetodos](https://avatars0.githubusercontent.com/u/56608703?s=400&u=ae31a7a07d28895589b42ed0fcfc102c3d5bccff&v=4)
@@ -90,7 +106,7 @@ Pré-requisitos
 -----------------
 Para a construção e montagem desse projeto e visando a praticidade foram utilizados as tecnologias [docker](https://docs.docker.com/engine/install/) e [docker compose](https://docs.docker.com/compose/install/). 
 
-Iniciando o projeto
+Instalando o projeto
 -----------------
 - Clone o projeto com o comando ```git clone git@github.com:tseixas/backend-python-creditcard.git```
 
