@@ -28,7 +28,7 @@ def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
 
 
 @app.post('/api/v1/credit-card/', response_model=schemas.Card)
-def save_card(card: schemas.CardBase, current_user: schemas.User = Depends(get_current_active_user)):
+def create_card(card: schemas.CardBase, current_user: schemas.User = Depends(get_current_active_user)):
     return save_card(card=card)
 
 
