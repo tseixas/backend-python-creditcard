@@ -10,7 +10,7 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String)
+    username = Column(String, unique=True)
     full_name = Column(String)
     hashed_password = Column(String)
 
@@ -21,7 +21,7 @@ class Card(Base):
     id = Column(Integer, primary_key=True, index=True)
     exp_date = Column(Date)
     holder = Column(String)
-    number = Column(String)
+    number = Column(String, unique=True)
     cvv = Column(Integer)
     brand = Column(String)
 
