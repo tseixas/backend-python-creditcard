@@ -69,3 +69,61 @@ Boa sorte, Equipe MaisTodos!
 
 ![Luck](https://media.giphy.com/media/l49JHz7kJvl6MCj3G/giphy.gif)
 
+Instruções sobre desenvolvimento do projeto
+========================
+
+Tecnologias utilizadas
+-----------------
+Para esse projeto foram utilizadas as seguintes ferramentas no desenvolvimento.
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- FastAPI-SQLAlchemy
+- python-creditcard
+- Docker e Docker compose
+
+Ferramentas utilizadas nos testes:
+- Pytest
+- httpx
+
+Pré-requisitos
+-----------------
+Para a construção e montagem desse projeto e visando a praticidade foram utilizados as tecnologias [docker](https://docs.docker.com/engine/install/) e [docker compose](https://docs.docker.com/compose/install/). 
+
+Iniciando o projeto
+-----------------
+- Clone o projeto com o comando ```git clone git@github.com:tseixas/backend-python-creditcard.git```
+
+- Na raiz do projeto e já tendo configurado os itens mencionados no tópico de pré-requisitos, rodar os seguintes comandos no seu terminal.
+1) ```make psql-up``` - comando irá montar e configurar um container docker com o banco de dados e a aplicação.
+
+2) ```make start``` - comando irá subir o servidor da aplicação.
+
+A aplicação ficará disponível via swagger na seguinte url http://127.0.0.1:8000/docs#/
+
+> *OBS*: **make psql-down** - comando para remover o container da aplicação
+
+Autenticação
+-----------------
+Para a utilização dos endpoints será necessário se autenticar, segue abaixo como realizar esse procedimento.
+
+Foi desenvolvido duas formas de autenticação a primeira via swagger e a segunda via endpoint.
+
+Abaixo segue passo-a-passo para os testes via swagger.
+- Com o projeto já rodando, acesse a url http://127.0.0.1:8000/docs#/
+- No canto superior direito haverá um botão chamado **Authorize**, clique nele e abrirá um modal.
+- Preencha as informações de *username* e *password* com as informações abaixo.
+
+  `username: admin`
+
+  `password: secret`
+
+- Após preenchido, confirme no botão **Authorize**
+- Pronto! agora poderá acessar os endpoint até então protegidos.
+
+
+Testes
+-----------------
+Foram realizados alguns testes e é possível executá-los da seguinte forma.
+
+- No terminal de sua preferência e na raiz do projeto rodar o seguinte comando: ```pytest```
