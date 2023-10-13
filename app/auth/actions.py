@@ -4,8 +4,7 @@ from typing import Annotated, Union
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
-from app.domain.schemas import User, UserInDB, TokenData
-from app.domain.models import User
+from app.domain import schemas, models
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -23,6 +22,20 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
+def create_default_user():
+    user = models.User(
+        username='admin',
+        full_name='Admin',
+        hashed_password='$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW'
+    )
+
+    db.session.add(user)
+    db.session.commit()
+    db.session.refresh(user)
+
+    return user
+
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -32,12 +45,19 @@ def get_password_hash(password):
 
 
 def get_user(username: str):
-    user = db.session.query(User).filter(User.username == username).first()
+    user = (
+        db.session.query(models.User)
+        .filter(models.User.username == username)
+        .first()
+    )
+
+    if not user:
+        user = create_default_user()
     
-    return UserInDB(
-        id=user.id, 
-        username=user.username, 
-        full_name=user.full_name, 
+    return schemas.UserInDB(
+        id=user.id,
+        username=user.username,
+        full_name=user.full_name,
         hashed_password=user.hashed_password
     )
 
@@ -82,7 +102,7 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
         if username is None:
             raise credentials_exception
 
-        token_data = TokenData(username=username)
+        token_data = schemas.TokenData(username=username)
     except JWTError:
         raise credentials_exception
 
@@ -95,7 +115,7 @@ def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
 
 
 def get_current_active_user(
-    current_user: Annotated[User, Depends(get_current_user)]
+    current_user: Annotated[schemas.User, Depends(get_current_user)]
 ):
     return current_user
 
