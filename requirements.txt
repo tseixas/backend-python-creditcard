@@ -23,6 +23,7 @@ psycopg2-binary==2.9.9
 pyasn1==0.5.0
 pycparser==2.21
 pydantic==2.4.2
+pydantic-settings==2.0.3
 pydantic_core==2.10.1
 pytest==7.4.2
 python-creditcard @ git+https://github.com/maistodos/python-creditcard.git@6b6bcc5d975985337c35e5c1a4f87d861bcac731
