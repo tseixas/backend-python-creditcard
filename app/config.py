@@ -9,6 +9,6 @@ class Settings(BaseSettings):
     secret_key: str = "34fc16eb6fd5afaaa9b61aec70e5cef05b80c91f2dc502025b9ed9bd6100d897"
     algotithm: str = "HS256"
     token_expire_minutes: int = 30
-
+    key_cryptography:bytes = b'rkBG7zFWLfAOmB3INc6t-rwKnCFjZZljVk3eUQycuGE='
 
 settings = Settings()

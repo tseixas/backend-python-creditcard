@@ -1,6 +1,7 @@
 from fastapi import HTTPException
 from fastapi_sqlalchemy import db
 from app.domain import models, schemas
+from app.utils import encrypt
 from math import ceil
 from creditcard import CreditCard
 
@@ -41,7 +42,7 @@ def save_card(card: schemas.CardBase):
     db_card = models.Card(
         exp_date=card.exp_date,
         holder=card.holder,
-        number=card.number,
+        number=encrypt(credit_card.number),
         cvv=card.cvv,
         brand=credit_card.get_brand()
     )
