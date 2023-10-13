@@ -1,9 +1,18 @@
-from .database import Base
+from app.database import Base
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import validates
 import datetime
 import calendar
 from fastapi import HTTPException
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String)
+    full_name = Column(String)
+    hashed_password = Column(String)
 
 
 class Card(Base):

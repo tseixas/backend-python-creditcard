@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from fastapi_sqlalchemy import db
-from . import models, schemas
+from app.domain import models, schemas
 from math import ceil
 from creditcard import CreditCard
 
