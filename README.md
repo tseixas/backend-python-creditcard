@@ -12,6 +12,7 @@ Sumário
   - [Instalando o projeto](#instalando-o-projeto)
   - [Autenticação](#autenticação)
   - [Testes](#testes)
+  - [Melhorias futuras](#melhorias-futuras)
 <!--te-->
 # backend-python-creditcard
 
@@ -143,3 +144,10 @@ Testes
 Foram realizados alguns testes e é possível executá-los da seguinte forma.
 
 - No terminal de sua preferência e na raiz do projeto rodar o seguinte comando: ```pytest```
+
+Melhorias futuras
+-----------------
+- Adicionar mais testes.
+- Melhorar inicialização do projeto localmente.
+- Disponibilizar forma de adicionar mais usuários.
+- Adicionar mais formas de autenticação.
